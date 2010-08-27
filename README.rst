@@ -1,8 +1,8 @@
-======================================
+====================================================================
 Absorb
-======================================
-Minimal web browser written using Ruby
-++++++++++++++++++++++++++++++++++++++
+====================================================================
+Minimal web browser written in Ruby using QtWebkit and KDE libraries
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 Features
 --------
@@ -12,6 +12,8 @@ Features
 * Following a link by click
 
 * Setting the opened page's Favicon as the window icon
+
+* Setting the opened page's title as the window title
 
 * Saving cookies using KIO::Integration::CookieJar
 
