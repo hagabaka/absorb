@@ -1,3 +1,5 @@
+require 'xdg'
+
 include Absorb
 
 WebSettings.icon_database_path = 

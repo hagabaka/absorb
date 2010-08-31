@@ -2,15 +2,16 @@
 
 require 'Qt4'
 require 'qtwebkit'
-require 'xdg'
+require 'shellwords'
 
 module Absorb
   Application = Qt::Application.new ARGV
   WebSettings = Qt::WebSettings.global_settings
   WebView = Qt::WebView.new
 
-  [ Dir.glob('data/absorb/*.rb') +
-    XDG::Data.glob('absorb/*.rb') ].flatten.each &method(:require)
+  if IO.select([$stdin], [], [], 0)
+    Shellwords.shellwords($stdin.read).each &method(:require)
+  end
 
   WebView.show
   Application.exec
