@@ -26,6 +26,8 @@ The following features are provided by scripts:
 
 * Setting the opened page's title as the window title
 
+* Saving cookies using Redis
+
 * Saving cookies using KIO::Integration::CookieJar
 
 Todo
