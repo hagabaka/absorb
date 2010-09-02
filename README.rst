@@ -30,16 +30,12 @@ The following features are provided by scripts:
 
 * Saving cookies using Redis
 
-* Saving cookies using KIO::Integration::CookieJar
+* Saving cookies using KIO::Integration::CookieJar (
+
+* Basic VIm-like UI
 
 Todo
 ----
 
 * An actual API to configure and control the browser
-
-* Control the order of scripts being loaded
-
-* A Luakit_ like UI
-
-.. _Luakit: http://luakit.org
 
