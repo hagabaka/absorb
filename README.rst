@@ -30,7 +30,7 @@ The following features are provided by scripts:
 
 * Saving cookies using Redis
 
-* Saving cookies using KIO::Integration::CookieJar (
+* Saving cookies using KIO::Integration::CookieJar (broken)
 
 * Basic VIm-like UI
 
