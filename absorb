@@ -6,6 +6,8 @@ require 'shellwords'
 
 module Absorb
   Application = Qt::Application.new ARGV
+  MainWindow = Qt::MainWindow.new
+
   WebSettings = Qt::WebSettings.global_settings
   WebView = Qt::WebView.new
 
@@ -13,7 +15,8 @@ module Absorb
     Shellwords.shellwords($stdin.read).each &method(:require)
   end
 
-  WebView.show
+  MainWindow.central_widget = WebView
+  MainWindow.show
   Application.exec
 end
 
