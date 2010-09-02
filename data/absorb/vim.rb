@@ -88,8 +88,7 @@ module Absorb
     add_action key, name do
       main_frame = WebView.page.main_frame
       main_frame.set_scroll_bar_value orientation,
-        main_frame.scroll_bar_value(orientation) + 
-        sign * 0.05 * main_frame.scroll_bar_maximum(orientation)
+        main_frame.scroll_bar_value(orientation) + sign * 20
     end
   end
 end
