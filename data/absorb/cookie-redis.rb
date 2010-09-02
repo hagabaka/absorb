@@ -14,9 +14,13 @@ class Absorb::RedisCookieJar < Qt::NetworkCookieJar
   end
 
   def setCookiesFromUrl(*arguments)
-    sync_from_redis
-    super *arguments
-    sync_to_redis
+    begin
+      redis_watch 'cookies'
+      sync_from_redis
+    end until redis_multi do
+      super *arguments
+      sync_to_redis
+    end
   end
 
   private
@@ -28,6 +32,22 @@ class Absorb::RedisCookieJar < Qt::NetworkCookieJar
   def sync_to_redis
     @redis.set('cookies', 
                all_cookies.map {|cookie| cookie.to_raw_form.to_s}.join(', '))
+  end
+
+  def redis_watch(*arguments)
+    begin
+      @redis.watch *arguments
+    rescue RuntimeError
+    end
+  end
+
+  def redis_multi(&block)
+    begin
+      @redis.multi &block
+    rescue RuntimeError
+      yield
+      true
+    end
   end
 end
 
