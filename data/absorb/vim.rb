@@ -81,14 +81,13 @@ module Absorb
     WebView.page.history.back
   end
 
-  [ ['k', 'Up',    Qt::Vertical,   -1],
-    ['j', 'Down',  Qt::Vertical,    1],
-    ['h', 'Left',  Qt::Horizontal, -1],
-    ['l', 'Right', Qt::Horizontal,  1] ].each do |key, name, orientation, sign|
+  [ ['k', 'Up',     0, -1],
+    ['j', 'Down',   0,  1],
+    ['h', 'Left',  -1,  0],
+    ['l', 'Right',  1,  0] ].each do |key, name, dx, dy|
+    (dx, dy) = [dx, dy].map &20.method(:*)
     add_action key, name do
-      main_frame = WebView.page.main_frame
-      main_frame.set_scroll_bar_value orientation,
-        main_frame.scroll_bar_value(orientation) + sign * 20
+      WebView.page.main_frame.scroll dx, dy
     end
   end
 end
