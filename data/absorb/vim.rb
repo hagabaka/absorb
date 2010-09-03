@@ -24,7 +24,7 @@ module Absorb
     PromptBarTitle.text = label
     PromptBarEdit.set_focus Qt::OtherFocusReason
     PromptBarEdit.connect SIGNAL(:returnPressed) do
-      block.call PromptBarEdit.text
+      yield PromptBarEdit.text
       hide_prompt
     end
   end
