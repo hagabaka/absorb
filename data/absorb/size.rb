@@ -1,7 +1,7 @@
 include Absorb
 
 main_frame = WebView.page.main_frame
-main_frame.connect SIGNAL("contentsSizeChanged(const QSize&)") do
+WebView.connect SIGNAL("loadFinished(bool)") do
   available_size = Application.desktop.available_geometry.size
   MainWindow.size = main_frame.contents_size.bounded_to available_size
 
